@@ -3,7 +3,7 @@ let app = {
     apiRootUrl: "http://localhost:8080",
 
     init: function () {
-        console.log('app.init()');
+        // console.log('app.init()');
 
         // On appelle la méthode s'occupant d'ajouter les EventListener sur les éléments déjà dans le DOM
         app.addAllEventListeners();
@@ -124,7 +124,7 @@ let app = {
                     jsonPromise.then(
                         function (jsonResponse) {
 
-                            console.log(jsonResponse);
+                            // console.log(jsonResponse);
 
                             let selectElement = document.getElementById("videogameId");
 
@@ -195,6 +195,14 @@ let app = {
 
                             $('#addVideogameModal').modal('hide');
 
+                            // Réinitialisation des valeurs des input form (Titre du jeu vidéo):
+                            let videogameNewNameElement = formElement.querySelector("#inputName");
+                            videogameNewNameElement.value = "";
+
+                            // Réinitialisation des valeurs des input form (Editeur du jeu vidéo):
+                            let videogameNewEditorElement = formElement.querySelector("#inputEditor");
+                            videogameNewEditorElement.value = "";
+
                             let config = {
 
                                 method: 'GET',
@@ -207,7 +215,7 @@ let app = {
 
                             let selectElement = document.getElementById("videogameId");
                       
-                            // Ajouter une balise <option> par videogame
+                            // Ajouter une balise <option> pour le videogame
                             optionItem = document.createElement('option');
                             optionItem.textContent = jsonResponse.name;
                             optionItem.setAttribute( "value", jsonResponse.id );
